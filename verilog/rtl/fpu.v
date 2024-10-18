@@ -62,45 +62,45 @@ reg rsta,rstm,rstd,rstc,rsts,eq1,less1,great1;
 
   //add
   fp_add addu(
-    // `ifdef USE_POWER_PINS
-    //   .vccd1(vccd1),	// User area 1 1.8V power
-    //   .vssd1(vssd1),	// User area 1 digital ground
-    // `endif
+    `ifdef USE_POWER_PINS
+      .vccd1(vccd1),	// User area 1 1.8V power
+      .vssd1(vssd1),	// User area 1 digital ground
+    `endif
     .in1(in1pa),.in2(in2pa),.out(aout),.ov(aov),.un(aun),.clk(clk),.rst(rstp),.round_m(round_mp),.done(adone),.inv(inva),.inexact(inexacta));
-  
+
 
 
 
   // //mul
   fp_mul mulu(
-    // `ifdef USE_POWER_PINS
-    //   .vccd1(vccd1),	// User area 1 1.8V power
-    //   .vssd1(vssd1),	// User area 1 digital ground
-    // `endif
+    `ifdef USE_POWER_PINS
+      .vccd1(vccd1),	// User area 1 1.8V power
+      .vssd1(vssd1),	// User area 1 digital ground
+    `endif
     .in1(in1pm),.in2(in2pm),.out(mout),.ov(mov),.un(mun),.clk(clk),.rst(rstp),.round_m(round_mp),.act(act),.done(mdone),.inv(invm),.inexact(inexactm));
   
   // // //compare
   fp_comp com1(
-    // `ifdef USE_POWER_PINS
-    //   .vccd1(vccd1),	// User area 1 1.8V power
-    //   .vssd1(vssd1),	// User area 1 digital ground
-    // `endif
+    `ifdef USE_POWER_PINS
+      .vccd1(vccd1),	// User area 1 1.8V power
+      .vssd1(vssd1),	// User area 1 digital ground
+    `endif
     .in1(in1pc),.in2(in2pc),.eq(eq0),.great(great0),.less(less0),.act(act),.done(cdone),.clk(clk),.rst(rstp),.inv(invc));
   
   // // division
   fp_div dv1(
-    // `ifdef USE_POWER_PINS
-    //   .vccd1(vccd1),	// User area 1 1.8V power
-    //   .vssd1(vssd1),	// User area 1 digital ground
-    // `endif
+    `ifdef USE_POWER_PINS
+      .vccd1(vccd1),	// User area 1 1.8V power
+      .vssd1(vssd1),	// User area 1 digital ground
+    `endif
     .in1(in1pd),.in2(in2pd),.out(dout),.ov(dov),.un(dun),.rst(rstp),.clk(clk),.round_m(round_mp),.act(act),.done(ddone),.inv(invd),.inexact(inexactd),.div_zero(div_zerod));
-  
+
   // //square root
    fp_sqr   sqr1(
-  //   `ifdef USE_POWER_PINS
-  //     .vccd1(vccd1),	// User area 1 1.8V power
-  //     .vssd1(vssd1),	// User area 1 digital ground
-  //   `endif
+    `ifdef USE_POWER_PINS
+      .vccd1(vccd1),	// User area 1 1.8V power
+      .vssd1(vssd1),	// User area 1 digital ground
+    `endif
     .in1(in1ps),.out(sout),.ov(sov),.un(sun),.clk(clk),.rst(rstp),.round_m(round_mp),.act(act),.done(sdone),.inv(invs),.inexact(inexacts));
 
   // Select inputs and outputs depending on the operation

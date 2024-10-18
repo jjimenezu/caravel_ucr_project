@@ -1,0 +1,141 @@
+{
+    "DESIGN_NAME": "user_project_wrapper",
+    "DESING_IS_CORE": 1,
+    "ROUTING_CORES": 1,
+    "SYNTH_USE_PG_PINS_DEFINES": "USE_POWER_PINS",
+        "VERILOG_FILES":  [
+        "dir::../../verilog/rtl/*defines.v",
+        "dir::../../verilog/rtl/*characters.v",
+        "dir::../../verilog/rtl/fpu_wrapper.v",
+        "dir::../../verilog/rtl/fpu.v",
+        "dir::../../verilog/rtl/user_project_wrapper.v"
+    ],
+
+    "_comment": "/// CLK",
+    "CLOCK_PERIOD": 80,
+    "CLOCK_PORT": "wb_clk_i",
+    "CLOCK_NET": "fpu_w0.clk",
+    "RUN_CTS": 1,
+
+    "_comment": "/// INPUTS FILES ",
+    "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+
+   "_comment":"CONSTRAINTS",
+    "MAX_TRANSITION_CONSTRAINT": 1.5,
+
+    "_comment":"JUMP ERRORS",
+    "RUN_LINTER": 0,
+    "QUIT_ON_SYNTH_CHECKS": 0,
+
+     "_comment":"FLOORPLAN",
+    "FP_PDN_CHECK_NODES": 1,
+    "FP_SIZING": "absolute",
+    "DIE_AREA": "0 0 2920 3520",
+
+    "_comment":"IO CONFIG",
+    "UNIT": 2.4,
+    "FP_IO_VEXTEND": "expr::2 * $UNIT",
+    "FP_IO_HEXTEND": "expr::2 * $UNIT",
+    "FP_IO_VLENGTH": "expr::$UNIT",
+    "FP_IO_HLENGTH": "expr::$UNIT",
+    "FP_IO_VTHICKNESS_MULT": 4,
+    "FP_IO_HTHICKNESS_MULT": 4,
+
+    "_comment":"POWER DISTRIBUTION NETWORK ",
+    "FP_PDN_VPITCH": 180,
+    "FP_PDN_HPITCH": 180,
+    "FP_PDN_MULTILAYER": 1,
+    "FP_PDN_AUTO_ADJUST": 1,
+    "VDD_NETS": [
+        "vccd1",
+        "vccd2",
+        "vdda1",
+        "vdda2"
+    ],
+    "GND_NETS": [
+        "vssd1",
+        "vssd2",
+        "vssa1",
+        "vssa2"
+    ],
+    "FP_PDN_MULTILAYER": 1,
+
+
+    "_comment":"// POWER RING",
+    "FP_PDN_CORE_RING": 1,
+    "FP_PDN_CORE_RING_VWIDTH": 3.1,
+    "FP_PDN_CORE_RING_HWIDTH": 3.1,
+    "FP_PDN_CORE_RING_VOFFSET": 12.45,
+    "FP_PDN_CORE_RING_HOFFSET": 12.45,
+    "FP_PDN_CORE_RING_VSPACING": 1.7,
+    "FP_PDN_CORE_RING_HSPACING": 1.7,
+    "FP_PDN_VWIDTH": 3.1,
+    "FP_PDN_HWIDTH": 3.1,
+    "FP_PDN_VSPACING": "expr::(5 * $FP_PDN_CORE_RING_VWIDTH)",
+    "FP_PDN_HSPACING": "expr::(5 * $FP_PDN_CORE_RING_HWIDTH)",
+
+
+    "_comment": "// MACRO FILES",
+
+    "VERILOG_FILES_BLACKBOX": [
+        "dir::../../verilog/gl/fp_comp.v",
+        "dir::../../verilog/gl/fp_add.v",
+        "dir::../../verilog/gl/fp_mul.v",
+        "dir::../../verilog/gl/fp_div.v",
+        "dir::../../verilog/gl/fp_sqr.v"
+    ],
+    "EXTRA_LEFS": [
+        "dir::../../lef/fp_comp.lef",
+        "dir::../../lef/fp_add.lef",
+        "dir::../../lef/fp_mul.lef",
+        "dir::../../lef/fp_div.lef",
+        "dir::../../lef/fp_sqr.lef"
+    ],
+    "EXTRA_GDS_FILES": [
+        "dir::../../gds/fp_comp.gds",
+        "dir::../../gds/fp_add.gds",
+        "dir::../../gds/fp_mul.gds",
+        "dir::../../gds/fp_div.gds",
+        "dir::../../gds/fp_sqr.gds"
+    ],
+    "EXTRA_LIBS":[
+        "dir::../../lib/fp_comp.lib",
+        "dir::../../lib/fp_add.lib",
+        "dir::../../lib/fp_mul.lib",
+        "dir::../../lib/fp_div.lib",
+        "dir::../../lib/fp_sqr.lib"
+    ],
+    "EXTRA_SPEFS": [
+        "fp_add",
+        "dir::../../spef/multicorner/fp_add.min.spef",
+        "dir::../../spef/multicorner/fp_add.nom.spef",
+        "dir::../../spef/multicorner/fp_add.max.spef",
+        "fp_comp",
+        "dir::../../spef/multicorner/fp_comp.min.spef",
+        "dir::../../spef/multicorner/fp_comp.nom.spef",
+        "dir::../../spef/multicorner/fp_comp.max.spef",
+        "fp_mul",
+        "dir::../../spef/multicorner/fp_mul.min.spef",
+        "dir::../../spef/multicorner/fp_mul.nom.spef",
+        "dir::../../spef/multicorner/fp_mul.max.spef",
+        "fp_div",
+        "dir::../../spef/multicorner/fp_div.min.spef",
+        "dir::../../spef/multicorner/fp_div.nom.spef",
+        "dir::../../spef/multicorner/fp_div.max.spef",
+        "fp_sqr",
+        "dir::../../spef/multicorner/fp_sqr.min.spef",
+        "dir::../../spef/multicorner/fp_sqr.nom.spef",
+        "dir::../../spef/multicorner/fp_sqr.max.spef"
+    ],
+    "FP_PDN_MACRO_HOOKS": [
+        "fpu_w0.fpu.addu vccd1 vssd1 vccd1 vssd1",
+        "fpu_w0.fpu.mulu vccd1 vssd1 vccd1 vssd1",
+        "fpu_w0.fpu.com1 vccd1 vssd1 vccd1 vssd1",
+        "fpu_w0.fpu.dv1 vccd1 vssd1 vccd1 vssd1" ,
+        "fpu_w0.fpu.sqr1 vccd1 vssd1 vccd1 vssd1"
+    ]
+
+}
+
+

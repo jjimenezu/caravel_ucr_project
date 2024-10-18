@@ -24,10 +24,10 @@
 
 
 module fp_add(
-  // `ifdef USE_POWER_PINS
-  //   inout vccd1,	// User area 1 1.8V supply
-  //   inout vssd1,	// User area 1 digital ground
-  // `endif  
+  `ifdef USE_POWER_PINS
+    inout vccd1,	// User area 1 1.8V supply
+    inout vssd1,	// User area 1 digital ground
+  `endif
   input [W-1:0] in1,
   input [W-1:0] in2,
   output reg [W-1:0] out,

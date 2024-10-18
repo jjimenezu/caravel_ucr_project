@@ -19,10 +19,10 @@
 module divide_r
             #(parameter WIDTH = 26, parameter STAGES = 1)
             (
-            `ifdef USE_POWER_PINS
-                inout vccd1,	// User area 1 1.8V supply
-                inout vssd1,	// User area 1 digital ground
-            `endif
+            // `ifdef USE_POWER_PINS
+            //     inout vccd1,	// User area 1 1.8V supply
+            //     inout vssd1,	// User area 1 digital ground
+            // `endif
             input clk,rst,
             input [WIDTH-1:0] num,den,
             output reg [WIDTH-1:0] quot,remo,

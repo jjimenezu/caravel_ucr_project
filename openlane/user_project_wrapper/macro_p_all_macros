@@ -1,0 +1,5 @@
+fpu_w0.fpu.addu 1100 300 N
+fpu_w0.fpu.com1 1100 600 N
+fpu_w0.fpu.sqr1 1100 1000 N
+fpu_w0.fpu.mulu 1100 1400 N
+fpu_w0.fpu.dv1 1100 2000 N

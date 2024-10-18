@@ -1,0 +1,89 @@
+{
+    "DESIGN_NAME": "fpu",
+    "VERILOG_FILES":  [
+        "dir::../../verilog/rtl/*defines.v",
+        "dir::../../verilog/rtl/*characters.v",
+        "dir::../../verilog/rtl/fpu.v"
+    ],
+    "CLOCK_PORT": "wb_clk_i",
+    "CLOCK_NET": "fpu_w0.clk",
+    "FP_PDN_MACRO_HOOKS":
+        "addu vccd1 vssd1 vccd1 vssd1, mulu vccd1 vssd1 vccd1 vssd1, com1 vccd1 vssd1 vccd1 vssd1, dv1 vccd1 vssd1 vccd1 vssd1, sqr1 vccd1 vssd1 vccd1 vssd1",
+    "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
+    "ROUTING_CORES": 8,
+    "SYNTH_STRATEGY": "AREA 3",
+    "VERILOG_FILES_BLACKBOX": [
+        "dir::../../verilog/gl/fp_comp.v",
+        "dir::../../verilog/gl/fp_add.v",
+        "dir::../../verilog/gl/fp_mul.v",
+        "dir::../../verilog/gl/fp_div.v",
+        "dir::../../verilog/gl/fp_sqr.v"
+    ],
+    "EXTRA_LEFS": [
+        "dir::../../lef/fp_comp.lef",
+        "dir::../../lef/fp_add.lef",
+        "dir::../../lef/fp_mul.lef",
+        "dir::../../lef/fp_div.lef",
+        "dir::../../lef/fp_sqr.lef"
+    ],
+    "EXTRA_GDS_FILES": [
+        "dir::../../gds/fp_comp.gds",
+        "dir::../../gds/fp_add.gds",
+        "dir::../../gds/fp_mul.gds",
+        "dir::../../gds/fp_div.gds",
+        "dir::../../gds/fp_sqr.gds"
+    ],
+    "EXTRA_LIBS":[
+        "dir::../../lib/fp_comp.lib",
+        "dir::../../lib/fp_add.lib",
+        "dir::../../lib/fp_mul.lib",
+        "dir::../../lib/fp_div.lib",
+        "dir::../../lib/fp_sqr.lib"
+    ],
+    "EXTRA_SPEFS": [
+        "fp_add",
+        "dir::../../spef/multicorner/fp_add.min.spef",
+        "dir::../../spef/multicorner/fp_add.nom.spef",
+        "dir::../../spef/multicorner/fp_add.max.spef",
+        "fp_comp",
+        "dir::../../spef/multicorner/fp_comp.min.spef",
+        "dir::../../spef/multicorner/fp_comp.nom.spef",
+        "dir::../../spef/multicorner/fp_comp.max.spef",
+        "fp_mul",
+        "dir::../../spef/multicorner/fp_mul.min.spef",
+        "dir::../../spef/multicorner/fp_mul.nom.spef",
+        "dir::../../spef/multicorner/fp_mul.max.spef",
+        "fp_div",
+        "dir::../../spef/multicorner/fp_div.min.spef",
+        "dir::../../spef/multicorner/fp_div.nom.spef",
+        "dir::../../spef/multicorner/fp_div.max.spef",
+        "fp_sqr",
+        "dir::../../spef/multicorner/fp_sqr.min.spef",
+        "dir::../../spef/multicorner/fp_sqr.nom.spef",
+        "dir::../../spef/multicorner/fp_sqr.max.spef"
+    ],
+    "RUN_LINTER": 0,
+    "FP_SIZING": "absolute",
+    "DIE_AREA": "0 0 927 1595",
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "FP_PDN_MULTILAYER": true,
+    "FP_PDN_AUTO_ADJUST": true,
+    "FP_PDN_CHECK_NODES": 0,
+    "FP_CORE_UTIL": 45,
+    "FP_ASPECT_RATIO": 2,
+    "SYNTH_USE_PG_PINS_DEFINES": "USE_POWER_PINS",
+    "RT_MAX_LAYER": "met4",
+    "PL_RESIZER_SETUP_SLACK_MARGIN": 1,
+    "GLB_RESIZER_SETUP_SLACK_MARGIN": 0.5,
+    "GLB_RESIZER_HOLD_SLACK_MARGIN": 0.5,
+    "PL_RESIZER_HOLD_SLACK_MARGIN": 1,
+    "RUN_HEURISTIC_DIODE_INSERTION": 1,
+    "HEURISTIC_ANTENNA_THRESHOLD": 110,
+    "GRT_REPAIR_ANTENNAS": 1,
+    "VDD_NETS": [
+        "vccd1"
+    ],
+    "GND_NETS": [
+        "vssd1"
+    ]
+}
