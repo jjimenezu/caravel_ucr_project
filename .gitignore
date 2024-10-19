@@ -1,6 +1,7 @@
 .readthedocs.yaml
 LICENSE
 Makefile
+
 caravel/
 def/
 dependencies/
@@ -11,7 +12,7 @@ lib/
 lvs/
 mag/
 maglef/
-
+ma
 precheck_results/
 sdc/
 sdf/
@@ -20,6 +21,7 @@ spef/
 spi/
 venv-cocotb/
 venv/
+
 ##############
 verilog/gl/
 openlane/*/runs

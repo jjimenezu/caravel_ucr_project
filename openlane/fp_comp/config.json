@@ -1,0 +1,34 @@
+{
+    "DESIGN_NAME": "fp_comp",
+    "DESIGN_IS_CORE": 0,
+    "ROUTING_CORES" : 8,
+    "VERILOG_FILES": [
+        "dir::../../verilog/rtl/special*.v",
+        "dir::../../verilog/rtl/fp_comp.v"
+    ],
+    "CLOCK_PERIOD": 80,
+    "CLOCK_PORT": "wb_clk_i",
+    "SYNTH_STRATEGY": "AREA 2",
+    "FP_SIZING": "absolute",
+    "DIE_AREA": "0 0 150 50",
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "MAX_TRANSITION_CONSTRAINT": 1.0,
+    "MAX_FANOUT_CONSTRAINT": 8,
+    "PL_TARGET_DENSITY": 0.55,
+    "MAGIC_DEF_LABELS": 0,
+    "SYNTH_BUFFERING": 1,
+    "RUN_HEURISTIC_DIODE_INSERTION": 1,
+    "HEURISTIC_ANTENNA_THRESHOLD": 110,    
+    "GRT_REPAIR_ANTENNAS": 1,
+    "FP_PDN_HPITCH": 10,
+    "FP_PDN_VPITCH": 20,
+    "SYNTH_USE_PG_PINS_DEFINES": "USE_POWER_PINS",
+    "VDD_NETS": [
+        "vccd1"
+    ],
+    "GND_NETS": [
+        "vssd1"
+    ],
+    "RUN_CVC": 1,
+    "RT_MAX_LAYER": "met4"
+}

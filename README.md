@@ -5,27 +5,11 @@
 | :exclamation: Important Note            |
 |-----------------------------------------|
 
-## FPU: (modulo fpu con arquitectura de prueba para hacer test)
-
-19/oct/24:
-
-[run: 24_10_19_01_51]
-- (Flow Complete)
-- Disminución de área
-- Disminucion parametro FANOUT_CONSTRAINT a 8
-- Agregar R a la cordenada norte para probar orden de pines
-
-
-
-## USER_PROJECT_WRAPPER: Plantilla para el espacio del usuario en el Caravel. Tiene incrustado el diseño de FPU
-
-19/oct/24
-[run: 24_10_19_04_47]
-- Se usa la macro FPU run: 24_10_19_01_51
-- Se cambia la posicion de la macro en macro.cfg para centrarla
-
-
-
+## Instrucciones:
+1 - Clonar un repositorio caravel_user_project
+2 - "make setup"
+3 - Sustituir directorios verilog y openlane por los de este repositorio
+4 - "make fpu", "make user_project_wrapper"
 
 
 Refer to [README](docs/source/index.md) for this sample project documentation.
