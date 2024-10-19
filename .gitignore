@@ -1,7 +1,6 @@
 .readthedocs.yaml
 LICENSE
 Makefile
-README.md
 caravel/
 def/
 dependencies/
