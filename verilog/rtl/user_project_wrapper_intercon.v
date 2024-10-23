@@ -90,10 +90,13 @@ wire [2:0] round_mp = la_data_in[72:70];     // rounding mode selector
 // fp_add
 wire [31:0] in1pa, in2pa, aout;
 wire aov,aun,adone,inva,inexacta;
+wire [2:0] round_ma;
+wire acta, rstpa;
 
 //fp_comp
 wire [31:0] in1pc,in2pc;
 wire eq0,great0,less0,invc,cdone;
+wire actc, rstpc;
 
 
 
@@ -121,8 +124,8 @@ fpu_interconnect fpu_intercon (
     .la_oenb (la_oenb),
     // IO Pads
     .io_in (io_in[37:6]),
-    .io_out(io_in[37:6]),
-    .io_oeb(io_in[37:6]),
+    .io_out(io_out[37:6]),
+    .io_oeb(io_oeb[37:6]),
     // IRQ
     .irq(user_irq),
 
@@ -135,6 +138,9 @@ fpu_interconnect fpu_intercon (
     .inva(inva),
     .inexacta(inexacta),
     .adone(adone),
+    // .round_ma(round_ma),
+    // .rstpa(rstpa),
+    // .acta(acta),
 
     //fp_comp
     .in1pc(in1pc),
@@ -143,7 +149,9 @@ fpu_interconnect fpu_intercon (
     .less0(less0),
     .great0(great0),
     .invc(invc),
-    .cdone(cdone)
+    .cdone(cdone),
+    // .rstpc(rstpc),
+    // .actc(actc)
 );
 
 
@@ -168,21 +176,22 @@ fp_add addu(
 
 
 //compare
-  fp_comp com1(
-`ifdef USE_POWER_PINS
-    .vccd1(vccd1),	// User area 1 1.8V power
-    .vssd1(vssd1),	// User area 1 digital ground
-`endif
-.in1(in1pc),
-.in2(in2pc),
-.eq(eq0),
-.great(great0),
-.less(less0),
-.act(act),
-.done(cdone),
-.clk(wb_clk_i),
-.rst(rstp),
-.inv(invc));
+fp_comp com1(
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),	// User area 1 1.8V power
+        .vssd1(vssd1),	// User area 1 digital ground
+    `endif
+    .in1(in1pc),
+    .in2(in2pc),
+    .eq(eq0),
+    .great(great0),
+    .less(less0),
+    .act(act),
+    .done(cdone),
+    .clk(wb_clk_i),
+    .rst(rstp),
+    .inv(invc)
+);
 
 endmodule	// user_project_wrapper
 

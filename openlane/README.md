@@ -1,45 +1,53 @@
-# Bitácora de ejecuciones del flujo
+# Summary
+
+## Arquitectura con 1 macro grande (Implementación realizada)
+
+### fpu
+Modulo fpu plano, sin macros
+
+### user_project_wrapper
+Plantilla para instanciar macro fpu en el espacio del usuario del Caravel.
+De modo que solo queda una macro grande en el diseño.
+
+
+## Arquitectura de macros fp.* dentro de macro fpu_wrapper (Problemas por querer hacer una macro con macros)
+
+### fpu_wrapper
+Modulo fpu con las macros fp_* instanciadas y compuertas lógicas para interconexion.
+
+Solo funciona con DESIGN_IS_CORE = FP_PDN_MULTILAYER = 1, pero se necesita que sea 0.
+
+Si DESIGN_IS_CORE = FP_PDN_MULTILAYER = 1 el flujo completa correctamente, pero queda con straps de metal 5 y da erorr de IR drop al ejecutar con user_project_wrapper (quedan vias de la macro sin conectar a metal 6)
+
+Si DESIGN_IS_CORE = FP_PDN_MULTILAYER = 0 el flujo no completa
+
+(Posible solución: PDN personalizada donde no se utilice metal 5 para los straps horizontales)
 
 
 
-## fpu
-Modulo fpu con arquitectura de prueba para hacer test
+## Arquitectura de macros fp_* y compuertas para la interconexion (Falla en detailed routing)
 
-[run: 24_10_19_01_51]
-- (Flow Complete)
-- Disminución de área
-- Disminucion parametro FANOUT_CONSTRAINT a 8
-- Agregar R a la cordenada norte para probar orden de pines
+Al modificar user_project_wrapper para instanciar la lógica de interconexion/mux y las macros fp_*.
 
-[run: 24_10_19_05_35]
--
-- Se disminuye mas el área
-- Se eliminan configuraciones resizer_slack (se dejan por defecto). Para mejorar tiempo de ejecución
+Al intentar tener macros + celdas en user_project_wrapper, no se realiza el routing.
+
+(Posible solución: mejorar el floorplan)
 
 
-## fp_comp
-Modulo comparador de valores en punto flotante
+## Arquitectura de macros fp_* y macro fpu_interconnect (violaciones de hold al final del flujo)
 
-[run: 24_10_19_06_36]
-- (Flow Complete)
-- Se sintetiza con estrategia AREA2 para minimizar número de compuertas (con el fin de disminuir el tiempo de ejecución)
+### fpu_interconect
+Modulo para la interconexion entre los módulos fp_* (sin instancias en su interior).
+
+
+## #user_project_wrapper_intercon
+Plantilla para instanciar macros fpu_intercon y fp_* en el espacio del usuario del Caravel.
+De modo que no quedan compuertas, solamente macros.
 
 
 
 
-## user_project_wrapper
-Plantilla para incrustar diseño en el espacio del usuario del Caravel.
 
-[run: 24_10_19_04_47]
-- (Flow Complete)
-- Se usa la macro FPU run: 24_10_19_01_51
-- Se cambia la posicion de la macro en macro.cfg para centrarla
-
-
-
-
-## TODO
-- probar parametro STD_CELL_LIBRARY_OPT: Specifies the standard cell library to be used during resizer optimizations.
 
 
 Refer to [README](docs/source/index.md) for this sample project documentation.

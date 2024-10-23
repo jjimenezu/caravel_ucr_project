@@ -1,0 +1,52 @@
+{
+    "DESIGN_NAME": "fpu_wrapper",
+    "ROUTING_CORES": 8,
+    "VERILOG_FILES": [
+        "dir::../../verilog/rtl/special_characters.v",
+        "dir::../../verilog/rtl/fpu_wrapper.v"
+    ],
+    "CLOCK_PORT": "wb_clk_i",
+    "CLOCK_PERIOD": 80.0,
+    "DESIGN_IS_CORE": 0,
+    "SYNTH_USE_PG_PINS_DEFINES": "USE_POWER_PINS",
+    "FP_SIZING": "absolute",
+    "DIE_AREA": "0 0 1460 1760",
+    "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "FP_PDN_MULTILAYER": false,
+    "FP_PDN_AUTO_ADJUST": true,
+    "FP_PDN_VOFFSET": 0,
+    "FP_PDN_HOFFSET": "expr::$FP_PDN_VOFFSET",
+    "FP_PDN_VPITCH": 60,
+    "FP_PDN_HPITCH": 10000,
+    "FP_PDN_MACRO_HOOKS": "com1 vccd1 vssd1 vccd1 vssd1",
+    "VDD_NETS": "vccd1",
+    "GND_NETS": "vssd1",
+    "VERILOG_FILES_BLACKBOX": [
+        "dir::../../verilog/gl/fp_comp.v",
+        "dir::../../verilog/gl/fp_add.v"
+    ],
+    "EXTRA_LEFS": [
+        "dir::../../lef/fp_comp.lef",
+        "dir::../../lef/fp_add.lef"
+    ],
+    "EXTRA_GDS_FILES": [
+        "dir::../../gds/fp_comp.gds",
+        "dir::../../gds/fp_add.gds"
+    ],
+    "EXTRA_LIBS": [
+        "dir::../../lib/fp_comp.lib",
+        "dir::../../lib/fp_add.lib"
+    ],
+    "EXTRA_SPEFS": [
+        "fp_comp",
+        "dir::../../spef/multicorner/fp_comp.min.spef",
+        "dir::../../spef/multicorner/fp_comp.nom.spef",
+        "dir::../../spef/multicorner/fp_comp.max.spef",
+        "fp_add",
+        "dir::../../spef/multicorner/fp_add.min.spef",
+        "dir::../../spef/multicorner/fp_add.nom.spef",
+        "dir::../../spef/multicorner/fp_add.max.spef"
+    ],
+    "RUN_LINTER": 0
+}

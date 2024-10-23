@@ -1,23 +1,31 @@
 {
     "DESIGN_NAME": "fp_add",
     "DESIGN_IS_CORE": 0,
-    "FP_PDN_MULTILAYER": false,
     "ROUTING_CORES" : 8,
     "VERILOG_FILES": [
         "dir::../../verilog/rtl/special_characters.v",
         "dir::../../verilog/rtl/fp_add.v"
     ],
     "CLOCK_PERIOD": 80,
-    "CLOCK_PORT": "clk",
-    "SYNTH_STRATEGY": "AREA 2",
+    "CLOCK_PORT": "wb_clk_i",
+    "SYNTH_STRATEGY": "AREA 3",
     "FP_SIZING": "absolute",
     "DIE_AREA": "0 0 300 300",
+    "FP_CORE_UTIL":40,
+    "RT_MAX_LAYER": "met4",
     "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
-    "FP_PDN_HPITCH": 10,
-    "FP_PDN_VPITCH": 20,
-    "SYNTH_USE_PG_PINS_DEFINES": "USE_POWER_PINS",
-    "VDD_NETS": "vccd1",
-    "GND_NETS": "vssd1",
-    "RUN_CVC": 1,
-    "RT_MAX_LAYER": "met4"
+    "IO_SYNC": 0,
+    "MAX_TRANSITION_CONSTRAINT": 1.0,
+    "MAX_FANOUT_CONSTRAINT": 8,
+    "SYNTH_BUFFERING": 1,
+    "RUN_HEURISTIC_DIODE_INSERTION": 1,
+    "HEURISTIC_ANTENNA_THRESHOLD": 110,    
+    "GRT_REPAIR_ANTENNAS": 1,
+    "VDD_NETS": [
+        "vccd1"
+    ],
+    "GND_NETS": [
+        "vssd1"
+    ],
+    "RUN_CVC": 1
 }

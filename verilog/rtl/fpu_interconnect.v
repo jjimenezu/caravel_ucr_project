@@ -59,12 +59,15 @@ module fpu_interconnect #(
 
     //fp_add
     output reg [31:0] in1pa,in2pa,
+    // output reg rstpa, acta,
+    // output reg [2:0]  round_ma,
     input [31:0] aout,
     input aov, aun,
     input inva, inexacta, adone,
 
     //fp_comp
     output reg [31:0] in1pc,in2pc,
+    // output reg rstpc, actc,
     input eq0,less0,great0,
     input invc, cdone
 
@@ -80,6 +83,9 @@ wire [31:0] in2p = la_data_in[63:32];
 // wire rstp = la_data_in[65];
 // wire act  = la_data_in[66];
 // wire [2:0] round_mp = la_data_in[72:70];     // rounding mode selector
+// wire rstp = la_data_in[65];
+// wire act  = la_data_in[66];
+// wire [2:0] round_mp = la_data_in[72:70];     // rounding mode selector
 wire [2:0] opcode   = la_data_in[69:67];     // 1 = mul, 0 = add, 2 = division, 3 = square root, 4 = compare
 //outputs
 reg [31:0] out0;
@@ -89,6 +95,7 @@ assign io_oeb = 32'h0000_0000;
 assign wbs_dat_o =  32'h0000_0000;
 assign wbs_ack_o = 1'b0;
 assign irq = 3'b000;
+
 
 
 
@@ -131,6 +138,8 @@ always @* begin
       inv0 = inva;
       inexact0 = inexacta;
       div_zero0 = 0;
+      // {rstpa,acta,round_ma} = {rstp,act,round_mp};
+      // {rstpc,actc} = 2'b00;
 
     end
     // 1: begin
@@ -216,6 +225,8 @@ always @* begin
       inv0 = invc;
       inexact0 = inexacta;
       div_zero0 = 0;
+      // {rstpa,acta,round_ma} = 5'b00000;
+      // {rstpc,actc} = {rstp,act};
     end
 
    default : begin
@@ -238,6 +249,8 @@ always @* begin
     inv0 = 0;
     inexact0 = 0;
     div_zero0 = 0;
+    // {rstpa,acta,round_ma} = {rstp,act,round_mp};
+    // {rstpc,actc} = 2'b00;
    end
   endcase
 

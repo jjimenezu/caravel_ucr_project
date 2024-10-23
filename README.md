@@ -6,10 +6,18 @@
 |-----------------------------------------|
 
 ## Instrucciones:
-1 - Clonar un repositorio caravel_user_project
-2 - "make setup"
-3 - Sustituir directorios verilog y openlane por los de este repositorio
-4 - "make fpu", "make user_project_wrapper"
+- 1) Clonar un repositorio caravel_user_project (o este mismo)
+- 2) "make setup"
+- 3) Sustituir directorios verilog y openlane por los de este repositorio (si se clono el repo original caravel_user_propject)
+
+## Arquitectura de una sola macro
+- "make fpu"
+- "make user_project_wrapper"
+
+## Arquitectura con modulo fpu_interconnect
+- un make para cada fp_* (por el momento solo fp_add y fp_comp)
+- "make fpu_interconnect"
+- "make user_project_wrapper_intercon"
 
 
 Refer to [README](docs/source/index.md) for this sample project documentation.

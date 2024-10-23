@@ -114,8 +114,8 @@ fpu mprj (
     // .io_out({io_out[37:30],io_out[7:0]}),
     // .io_oeb({io_oeb[37:30],io_oeb[7:0]}),
     .io_in (io_in[37:6]),
-    .io_out(io_in[37:6]),
-    .io_oeb(io_in[37:6]),
+    .io_out(io_out[37:6]),
+    .io_oeb(io_oeb[37:6]),
 
 
     // IRQ
