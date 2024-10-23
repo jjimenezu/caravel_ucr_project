@@ -1,0 +1,71 @@
+# Bitácora de ejecuciones del flujo
+
+## fp_*
+Modulos individuales de operaciones en punto flotante
+
+## fpu
+Modulo fpu plano, sin macros
+
+[run: 24_10_19_01_51]
+- (Flow Complete)
+- Disminución de área
+- Disminucion parametro FANOUT_CONSTRAINT a 8
+- pin_config: Agregar "R" a la cordenada norte para probar orden de pines
+
+[run: 24_10_19_05_35]
+- (Flow Complete)
+- Se disminuye mas el área
+- Se eliminan configuraciones resizer_slack (se dejan por defecto). Para mejorar tiempo de ejecución (no sirvió de mucho)
+
+
+[run: 24_10_19_08_10]
+- El resultado cambió, las celdas se ven mas uniformemente distribuidas en el core.
+
+[run: 24_10_19_10_32]
+- (Flow Complete)
+- (Flow Complete) fallo el usr_proj_wrapper
+- Se eliminan las variables del flujo que creo que no son necesarias, para probar a tener el conocimiento sobre cada variable.
+
+
+
+## fpu_wrapper
+Modulo fpu con los módulos fp_* instanciadas y compuertas lógicas para interconexion
+
+//Solo funciona con DESIGN_IS_CORE = FP_PDN_MULTILAYER = 1, pero se necesita que sea 0 para no usar metal 5.
+Si se utiliza metal 5 aquí ,da erorr de IR drop al ejecutar user_project_wrapper
+
+[run: ]
+- ()
+- Solo se usa macro fp_comp run: 24_10_19_06_36
+- Solo se instancia fp_comp y la fp_add (este ultimo aplanado con el resto del módulo)
+
+
+## fpu_interconect
+Modulo para la interconexion entre los módulos fp_*
+
+
+
+## user_project_wrapper
+Plantilla para incrustar diseño en el espacio del usuario del Caravel.
+
+[run: 24_10_19_04_47]
+- (Flow Complete)
+- Se usa la macro FPU run: 24_10_19_01_51
+- Se cambia la posicion de la macro en macro.cfg para centrarla
+
+
+[run: 24_10_22_17_45]
+- (Flow Complete)
+- Se usa la macro FPU run: 24_10_19_01_51
+
+
+[run]
+- flow fail
+- ejecución de fpu_wrapper con solo fp_comp como macro y fp_add plano
+- al intentar usar macros + compuertas en el user_project_wrapper, da error en detailed routing
+
+## TODO
+- probar parametro STD_CELL_LIBRARY_OPT: Specifies the standard cell library to be used during resizer optimizations.
+
+
+Refer to [README](docs/source/index.md) for this sample project documentation.
