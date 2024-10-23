@@ -27,9 +27,7 @@ Si DESIGN_IS_CORE = FP_PDN_MULTILAYER = 0 el flujo no completa
 
 ## Arquitectura de macros fp_* y compuertas para la interconexion (Falla en detailed routing)
 
-Al modificar user_project_wrapper para instanciar la lógica de interconexion/mux y las macros fp_*.
-
-Al intentar tener macros + celdas en user_project_wrapper, no se realiza el routing.
+Al intentar tener macros + celdas para interconexion/mux en user_project_wrapper, no se realiza el routing.
 
 (Posible solución: mejorar el floorplan)
 
@@ -40,7 +38,7 @@ Al intentar tener macros + celdas en user_project_wrapper, no se realiza el rout
 Modulo para la interconexion entre los módulos fp_* (sin instancias en su interior).
 
 
-## #user_project_wrapper_intercon
+### #user_project_wrapper_intercon
 Plantilla para instanciar macros fpu_intercon y fp_* en el espacio del usuario del Caravel.
 De modo que no quedan compuertas, solamente macros.
 
